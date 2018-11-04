@@ -2,6 +2,16 @@ document.querySelector('.add-to-album-btn').addEventListener('click', addPhoto);
 
 var album = [];
 
+document.querySelector('.bottom-section').addEventListener('click',function(event) {
+    if (event.target.classList.contains('delete-button')) {
+        getIdforDeletion(event)
+    }else if (event.target.classList.contains('fav-button')){
+        favoriteCard(event)
+    }
+});
+
+
+
 window.onload = function() {
     if (localStorage.getItem('album') !==null) {
         loadLocalStorage();
@@ -10,12 +20,13 @@ window.onload = function() {
 
 function appendCard(photo) {
     var card = document.createElement('article');
-    card.classList.add('card')
+    card.classList.add('card');
+    card.dataset.name = photo.id;
     card.innerHTML = 
-    `<div>${photo.title}</div>
+    `<div class="photo-title" dataset-name="${photo.id}">${photo.title}</div>
     <img class="card-image" src="${photo.file}">
-    <div>${photo.caption}</div>
-    <div>trash heart</div>`
+    <div class="photo-caption">${photo.caption}</div>
+    <div class="card-icons"><button class="delete-button"><button class="fav-button"></div>`
       document.querySelector('.bottom-section').prepend(card);
     }
 
@@ -26,7 +37,7 @@ function addPhoto() {
     var photo1 = new Photos(Date.now(), title, caption, URL.createObjectURL(file), false);
     photo1.saveToStorage();
 
-    appendCard(photo1);
+    appendCard(photo1); 
     album.push(photo1);
     photo1.saveToStorage(album);
 
@@ -41,4 +52,30 @@ function loadLocalStorage() {
     album.forEach(function(photo) {
          appendCard(photo);
         });
-    }
+}
+
+function getIdforDeletion(event) {
+     var cardId = parseInt(event.target.closest('article').dataset.name);
+     deleteCard(event, cardId)
+     }
+
+
+function deleteCard(event, cardId) {
+    var index = album.findIndex(function(photo) {
+        return photo.id === cardId;
+    });
+
+    album[index].deleteFromStorage(album, index);
+    event.target.closest('article').remove();
+} 
+
+function favoriteCard(event) {
+    var cardId = parseInt(event.target.closest('article').dataset.name);
+    var index = album.findIndex(function(photo) {
+        return photo.id === cardId;
+    });
+
+    album[index].updatePhoto(!album[index].favorite, album);
+    
+
+}

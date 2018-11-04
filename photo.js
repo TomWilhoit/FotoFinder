@@ -4,19 +4,21 @@ class Photos {
         this.title = title;
         this.caption = caption;
         this.file = file || Blob;
-        this.favorite = favorite;
+        this.favorite = favorite || false;
     }
 
     saveToStorage(album) {
         localStorage.setItem('album', JSON.stringify(album));
     }
 
-    deleteFromStorage() {
-
+    deleteFromStorage(album, index) {
+        album.splice(index, 1);
+        this.saveToStorage(album);
     }
 
-    updatePhoto() {
-
+    updatePhoto(isFavorite, album) {
+        this.favorite = isFavorite;
+        this.saveToStorage(album);
     }
 
 
