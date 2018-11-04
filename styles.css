@@ -1,8 +1,112 @@
+body {
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.bottom-section {
+    background-color: #C2B2B4;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 100%;
+}
+
+.caption-input-field {
+    width: 100%;
+}
+
+.caption-text {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.card {
+    margin: 20px;
+    background-color: #fff;
+    height: 450px;
+    color: #3E2A35;
+    border: 2px solid #938284;
+}
+
+.card-image{
+    width: 100%;
+}
+
+.fas{
+    color: #fff;
+    font-size: 20px;
+    margin: 12px 0px 0px 12px;
+}
+
+.ff-logo {
+    color: #fff;
+    font-size: 35px;
+    margin: 20px 0px 0px 20px;
+}
+
+.ff-logo-img {
+    height: 35px;
+}
+
+.header {
+    background-color: #3E2A35;
+    display: grid;
+    grid-template-columns: 300px 1fr 265px;
+}
+
+hr {
+    margin: 0px;
+}
+
 .input-file {
-	width: 0.1px;
-	height: 0.1px;
+    height: 0.1px;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
+	width: 0.1px;
 	z-index: -1;
 }
+
+label {
+    color: #fff;
+    background-color:#5B4447;
+    padding: 0px 100px;
+}
+
+.searchbar {
+    background-color: #C2B2B4;
+    height: 43px;
+    margin: 20px 20px 0px 0px;
+    width: 100%;
+}
+
+.search-input {
+    height: 35px;
+    width: 190px;
+}
+
+.submit-button {
+    background-color: #C2B2B4;
+    color: #fff;
+    padding: 13px 35px 12px 12px;
+}
+
+.title-text {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.title-input {
+    
+}
+
+.title-input-field {
+    width: 97%;
+}
+.top-section {
+    background-color: #3E2A35;
+    display: grid;
+    grid-template-columns: 1fr 300px 1fr;
+}   
+
+
+

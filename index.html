@@ -6,24 +6,34 @@
     <title>FotoFinder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    </head>
+    <link rel="stylesheet" type="text/css" media="screen href="normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
 <body>
-  <section class="top-section">
     <header class="header">
-       <div class="ff-logo">FOTO<i class="ff-icon">icon</i>FINDER</div> 
-       <div class="searchbar"><input>search</div>
-    </header>
-    <p class="title-text">Title</p>
-    <p class="title-input"><input></p>
-    <p class="caption-text">Caption</p>
-    <p class="caption-input"><input></p>
-    <label for="file">Choose a File<input type="file" id="file" class="input-file"/></label>
-    <div class="lower-buttons"><button class="view-fav-btn">View 1 Favorites</button><button class="add-to-album-btn">Add to Album</button></div>
-  </section>  
-  <hr class="section-divider">
-  <section class="bottom-section">
-
-  </section>
+       <div class="ff-logo">FOTO<img class ="ff-logo-img" src="images/foto-finder-logo.svg">FINDER</div> 
+       <div></div>
+       <div class="searchbar"><input class="search-input" type="text" placeholder="Look for your shit..." name="search"> <button class="submit-button" type="submit"><i class="fa fa-search"></i></button> </div>
+    </header>         
+    <section class="top-section">
+        <div></div>
+            <div class="top-section-column">
+            <p class="title-text">Title</p>
+            <p class="title-input-"><input class="title-input-field"></p>
+            <p class="caption-text">Caption</p>
+            <p class="caption-input"><input class="caption-input-field"></p>
+            <label class="label" for="file">Choose a File<input type="file" id="file" class="input-file" accept=".png, .jpg, .jpeg"></label>
+            <div class="lower-buttons"><button class="view-fav-btn">View 1 Favorites</button><button id="add-to-album" class="add-to-album-btn">Add to 
+            Album</button></div>
+            </div>
+        <div></div>
+    </section>   
+    <hr class="section-divider">
+    <section class="bottom-section">
+   
+    </section>
 </body>
+<script src="photo.js"></script>
 <script src="main.js"></script>
 </html>
