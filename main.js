@@ -1,5 +1,5 @@
 document.querySelector('.add-to-album-btn').addEventListener('click', addPhoto);
-
+document.querySelector('.view-fav-btn').addEventListener('click', filterFavorites)
 var album = [];
 
 document.querySelector('.bottom-section').addEventListener('click',function(event) {
@@ -38,6 +38,7 @@ function addPhoto() {
     var title = document.querySelector('.title-input-field').value;
     var caption = document.querySelector(".caption-input-field").value;
     var photo1 = new Photos(Date.now(), title, caption, URL.createObjectURL(file), false);
+    console.log('yo')
     photo1.saveToStorage();
 
     appendCard(photo1); 
@@ -54,7 +55,7 @@ function loadLocalStorage() {
     });
     album.forEach(function(photo, index) {
          appendCard(photo);
-         favoriteIcon(photo.id, index)
+         favoriteIcon(photo)
         });
 }
 
@@ -79,13 +80,25 @@ function favoriteCard(event) {
         return photo.id === cardId;
     });
     album[index].updatePhoto(!album[index].favorite, album);
-    favoriteIcon(cardId, index);
+    favoriteIcon(album[index]);
 }
 
-function favoriteIcon(cardId, index) {
-    if (album[index].favorite === true) {
-    document.querySelector(`.card[data-name="${cardId}"] .fav-button`).style.backgroundImage = "url('images/favorite-active.svg')";
+function favoriteIcon(photo) {
+    if (photo.favorite === true) {
+    document.querySelector(`.card[data-name="${photo.id}"] .fav-button`).style.backgroundImage = "url('images/favorite-active.svg')";
     } else {
-     document.querySelector(`.card[data-name="${cardId}"] .fav-button`).style.backgroundImage = "url('images/favorite.svg')";
+     document.querySelector(`.card[data-name="${photo.id}"] .fav-button`).style.backgroundImage = "url('images/favorite.svg')";
     }
 };
+
+function filterFavorites() {
+    var favoritePhotos = album.filter(function(photo) {
+    return photo.favorite
+    });
+    document.querySelector(".bottom-section").innerHTML = '';
+    favoritePhotos.forEach(function(photo,index) {
+        appendCard(photo);
+        favoriteIcon(photo);
+    });
+
+ }
