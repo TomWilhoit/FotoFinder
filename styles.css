@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     font-family: 'Open Sans', sans-serif;
+    background-color: #C2B2B4;
 }
 
 .bottom-section {
@@ -100,6 +101,13 @@ label {
     color: #fff;
     background-color:#5B4447;
     padding: 0px 158px;
+}
+
+.lower-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 20px 0px 20px 0px;
 }
 
 .photo-caption {
