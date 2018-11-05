@@ -19,6 +19,8 @@ class Photos {
     updatePhoto(isFavorite, album) {
         this.favorite = isFavorite;
         this.saveToStorage(album);
+
+        
     }
 
 

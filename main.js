@@ -28,7 +28,10 @@ function appendCard(photo) {
     <div class="photo-caption">${photo.caption}</div>
     <div class="card-icons"><button class="delete-button"><button class="fav-button"></div>`
       document.querySelector('.bottom-section').prepend(card);
+   
+    ;
     }
+
 
 function addPhoto() {
     var file = document.querySelector('#file').files[0];
@@ -49,8 +52,9 @@ function loadLocalStorage() {
         photo = new Photos(photo.id,photo.title, photo.caption, photo.file, photo.favorite); 
         return photo;
     });
-    album.forEach(function(photo) {
+    album.forEach(function(photo, index) {
          appendCard(photo);
+         favoriteIcon(photo.id, index)
         });
 }
 
@@ -74,8 +78,14 @@ function favoriteCard(event) {
     var index = album.findIndex(function(photo) {
         return photo.id === cardId;
     });
-
     album[index].updatePhoto(!album[index].favorite, album);
-    
-
+    favoriteIcon(cardId, index);
 }
+
+function favoriteIcon(cardId, index) {
+    if (album[index].favorite === true) {
+    document.querySelector(`.card[data-name="${cardId}"] .fav-button`).style.backgroundImage = "url('images/favorite-active.svg')";
+    } else {
+     document.querySelector(`.card[data-name="${cardId}"] .fav-button`).style.backgroundImage = "url('images/favorite.svg')";
+    }
+};

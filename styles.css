@@ -7,11 +7,12 @@ body {
     background-color: #C2B2B4;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    height: 100vh;
+    height: 100%;
 }
 
 .caption-input-field {
-    width: 100%;
+    width: 97%;
+    height:35px;
 }
 
 .caption-text {
@@ -59,6 +60,7 @@ body {
         width: 35px;
         background-image: url(images/favorite.svg);
         background-repeat: no-repeat;
+        
     }
 
 .fav-svg {
@@ -97,7 +99,7 @@ hr {
 label {
     color: #fff;
     background-color:#5B4447;
-    padding: 0px 100px;
+    padding: 0px 158px;
 }
 
 .photo-caption {
@@ -121,9 +123,11 @@ label {
 }
 
 .submit-button {
-    background-color: #C2B2B4;
+    background-image: url(images/search.svg);
+    background-repeat: no-repeat;
     color: #fff;
     padding: 13px 35px 12px 12px;
+
 }
 
 .title-text {
@@ -137,11 +141,12 @@ label {
 
 .title-input-field {
     width: 97%;
+    height: 35px;
 }
 .top-section {
     background-color: #3E2A35;
     display: grid;
-    grid-template-columns: 1fr 300px 1fr;
+    grid-template-columns: 1fr 420px 1fr;
 }   
 
 
