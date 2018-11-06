@@ -237,6 +237,10 @@
     padding: 0; /* 3 */
     white-space: normal; /* 1 */
   }
+
+  label {
+    margin: 0;
+  }
   
   /**
    * Add the correct vertical alignment in Chrome, Firefox, and Opera.
