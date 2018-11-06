@@ -3,7 +3,13 @@
     border: none;
     color: white;
     height: 28px;
+    width: 155px;
 }
+
+.add-to-album-btn:hover {
+    filter:brightness(1.5);
+}
+
 
 body {
     background-color: #C2B2B4;
@@ -52,11 +58,21 @@ body {
 }
 
 .delete-button { 
-    height: 35px;
-    width: 35px;
+    background-color: #3E2A35;
     background-image: url(images/delete.svg);
     background-repeat: no-repeat;
+    border: 0px;
+    height: 35px;
+    margin: 15px;
+    transition: all 500ms ease;
+    width: 35px;
 }
+
+.delete-button:hover {
+    height: 40px;
+    width: 40px;
+}
+
 
 .fas{
     color: #fff;
@@ -65,11 +81,19 @@ body {
 }
 
 .fav-button{ 
+    background-color: #3E2A35;
     background-image: url(images/favorite.svg);
     background-repeat: no-repeat;
+    border: 0px;
     height: 35px;
+    margin: 15px;
+    transition: all 500ms ease;
     width: 35px;
-        
+}
+
+.fav-button:hover {
+    width: 40px;
+    height: 40px;
 }
 
 .fav-svg {
@@ -106,30 +130,35 @@ hr {
 	z-index: -1;
 }
 
-label {
-    background-color:#5B4447;
-    color: #fff;
-    padding: 0px 158px;
+.label {
+    background-color: #5B4447;
+    width: 100%;
 }
 
 .lower-buttons {
     align-items: flex-end;
     display: flex;
     justify-content: space-between;
-    margin: 20px 0px 20px 0px;
+    margin: 20px 6px 20px 0px;
+}
+
+.photo-caption, .photo-title{
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .searchbar {
+    display:flex;
     background-color: #3E2A35;
-    height: 43px;
+    height: 37px;
     margin: 20px 20px 0px 0px;
-    width: 280px;
 }
 
 .search-input {
     border: 0px;
-    height: 35px;
+    border-radius: 3px 0px 0px 3px;
     width: 75%;
+    
 }
 
 .search-svg {
@@ -139,7 +168,7 @@ label {
 .submit-button {
    background-color: #C2B2B4;
    border: 0px;
-   height: 88%;
+   border-radius: 0px 3px 3px 0px;
    margin-left: -5px;
    padding: 0px;
    width: 50px;
@@ -166,11 +195,21 @@ label {
     grid-template-columns: 1fr 420px 1fr;
 }   
 
+.top-section-column {
+    grid-column: 2;
+    margin-top: 20px;
+}
+
 .view-fav-btn {
     background-color: #5B4447;
     border: none;
     color: white;
     height: 28px;
+    width: 155px;
+}
+
+.view-fav-btn:hover {
+    filter:brightness(1.5);
 }
 
 
