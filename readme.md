@@ -1,6 +1,6 @@
-#FotoFinder
+# FotoFinder
 
-##Create an instagram clone
+## Create an instagram clone
 
 Original assignment: 
 http://frontend.turing.io/projects/foto-finder-final.html
