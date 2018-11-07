@@ -3,11 +3,15 @@
     border: none;
     color: white;
     height: 28px;
-    width: 155px;
+    width: 115px;
 }
 
 .add-to-album-btn:hover {
     filter:brightness(1.5);
+}
+
+.add-to-album-btn:disabled {
+    background-color: dimgrey;
 }
 
 
@@ -27,6 +31,7 @@ body {
 .caption-input-field {
     height:35px;
     width: 97%;
+    margin: 0 0 24px 0;
 }
 
 .caption-text {
@@ -130,11 +135,6 @@ hr {
 	z-index: -1;
 }
 
-.label {
-    background-color: #5B4447;
-    width: 100%;
-}
-
 .lower-buttons {
     align-items: flex-end;
     display: flex;
@@ -144,7 +144,6 @@ hr {
 
 .photo-caption, .photo-title{
     padding-left: 10px;
-    padding-top: 10px;
 }
 
 .searchbar {
@@ -182,6 +181,7 @@ hr {
 .title-input-field {
     height: 35px;
     width: 97%;
+    margin: 0 0 20px;
 }
 
 .title-text {
@@ -193,19 +193,27 @@ hr {
     background-color: #3E2A35;
     display: grid;
     grid-template-columns: 1fr 420px 1fr;
-}   
+}  
+
+.top-section-column .label {
+    background-color: #5B4447;
+    color: #fff;
+    padding: 5px 159px;
+    width: 100%;
+}
 
 .top-section-column {
+
     grid-column: 2;
     margin-top: 20px;
 }
 
-.view-fav-btn {
+.view-fav-btn, .view{
     background-color: #5B4447;
     border: none;
     color: white;
     height: 28px;
-    width: 155px;
+    width: 115px;
 }
 
 .view-fav-btn:hover {
