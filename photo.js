@@ -16,9 +16,12 @@ class Photos {
         this.saveToStorage(album);
     }
 
-    updatePhoto(isFavorite, album) {
+    updatePhoto(isFavorite, album, title, caption) {
         this.favorite = isFavorite;
+        this.title = title;
+        this.caption = caption;
         this.saveToStorage(album);
+        
 
         
     }

@@ -1,11 +1,17 @@
 var album = [];
-var favCount = 0;
+document.querySelector('.top-section').addEventListener('input', disableAddButton)
+document.querySelector('.bottom-section').addEventListener('keydown', function(event){
+    if (event.key === 'Enter' && event.target.closest('.card') !== null) {
+        saveCardEdit(event)
+    }
 
+})
 document.querySelector('.search-input').addEventListener('keyup', search);
 document.querySelector('.add-to-album-btn').addEventListener('click', addPhoto);
 document.querySelector('.view').addEventListener('click', function(event){
     if (event.target.classList.contains('view-all-btn')) {
         showAll();
+        updateFavCounter();
     }else if (event.target.classList.contains('view-fav-btn')) {
         filterFavorites();
     }
@@ -14,14 +20,18 @@ document.querySelector('.view').addEventListener('click', function(event){
 document.querySelector('.bottom-section').addEventListener('click',function(event) {
     if (event.target.classList.contains('delete-button')) {
         getIdforDeletion(event)
-    }else if (event.target.classList.contains('fav-button')){
+    }else if (event.target.classList.contains('fav-button')) {
         favoriteCard(event)
+    }else if (event.target.closest('.card')!==null) {
+        event.target.onblur = saveCardEdit;
     }
+
 });
 
 window.onload = function() {
     if (localStorage.getItem('album') !==null) {
         loadLocalStorage();
+        disableAddButton();
     }
 }
 
@@ -30,9 +40,9 @@ function appendCard(photo) {
     card.classList.add('card');
     card.dataset.name = photo.id;
     card.innerHTML = 
-    `<div class="photo-title" dataset-name="${photo.id}">${photo.title}</div>
+    `<div class="photo-title" contenteditable="true">${photo.title}</div>
     <img class="card-image" src="${photo.file}">
-    <div class="photo-caption">${photo.caption}</div>
+    <div class="photo-caption" contenteditable="true">${photo.caption}</div>
     <div class="card-icons"><button class="delete-button"><button class="fav-button"></div>`
       document.querySelector('.bottom-section').prepend(card);
 };
@@ -46,6 +56,11 @@ function addPhoto() {
     appendCard(photo1); 
     album.push(photo1);
     photo1.saveToStorage(album);
+
+    document.querySelector(".caption-input-field").value = '';
+    document.querySelector(".title-input-field").value = '';
+    document.querySelector('#file').value = '';
+    disableAddButton();
 }
 
 function loadLocalStorage() {
@@ -58,6 +73,7 @@ function loadLocalStorage() {
          appendCard(photo);
          favoriteIcon(photo)
     });
+    updateFavCounter();
 }
 
 function getIdforDeletion(event) {
@@ -71,6 +87,7 @@ function deleteCard(event, cardId) {
 });
     album[index].deleteFromStorage(album, index);
     event.target.closest('article').remove();
+    updateFavCounter();
 } 
 
 function favoriteCard(event) {
@@ -78,20 +95,28 @@ function favoriteCard(event) {
     var index = album.findIndex(function(photo) {
         return photo.id === cardId;
     });
-    album[index].updatePhoto(!album[index].favorite, album);
+    album[index].updatePhoto(!album[index].favorite, album, album[index].title, album[index].caption);
     if (album[index].favorite === false) {
-    favCount--
+
     }
     favoriteIcon(album[index]);
+    updateFavCounter();
 }
 
 function favoriteIcon(photo) {
     if (photo.favorite === true) {
     document.querySelector(`.card[data-name="${photo.id}"] .fav-button`).style.backgroundImage = "url('images/favorite-active.svg')";
-    favCount++;
+   
     } else {
      document.querySelector(`.card[data-name="${photo.id}"] .fav-button`).style.backgroundImage = "url('images/favorite.svg')";
     }
+};  
+
+function updateFavCounter() {
+    var favoritePhotos = album.filter(function(photo) {
+    return photo.favorite
+});
+    var favCount = favoritePhotos.length
     document.querySelector(".view-fav-btn").innerText = `View ${favCount} favorites`;
 };
 
@@ -123,8 +148,16 @@ function filterFavorites() {
 
 function search(event) {
     event.preventDefault();
+    if (document.querySelector(".view-fav-btn") === null) {
+        var searchedAlbum= album.filter(function(photo) {
+            return photo.favorite
+        });
+    }else {
+        var searchedAlbum = album;
+    }
+
     var searchInput = document.querySelector('.search-input').value.toUpperCase();
-    var filteredPhotos = album.filter(photo => {
+    var filteredPhotos = searchedAlbum.filter(photo => {
         var upperCaseTitle = photo.title.toUpperCase();
         var upperCaseCaption = photo.caption.toUpperCase();
             return upperCaseTitle.includes(searchInput) || upperCaseCaption.includes(searchInput);
@@ -134,6 +167,25 @@ function search(event) {
     filteredPhotos.forEach(function(eachPhoto) {
         appendCard(eachPhoto);
     })
-
 }
    
+function saveCardEdit(event) {
+    var cardId = parseInt(event.target.closest('article').dataset.name);
+    var index = album.findIndex(function(photo) {
+        return photo.id === cardId;
+    });
+    var title = document.querySelector(`.card[data-name="${album[index].id}"] .photo-title`).innerText;
+    var caption = document.querySelector(`.card[data-name="${album[index].id}"] .photo-caption`).innerText;
+    album[index].updatePhoto(album[index].favorite, album, title, caption)
+    
+}
+
+function disableAddButton() {
+    if (document.querySelector(".caption-input-field").value === '' || document.querySelector('.title-input-field').value === '' || document.querySelector('#file').files.length === 0) {
+        document.querySelector('.add-to-album-btn').disabled = true;
+    } else {
+        document.querySelector('.add-to-album-btn').disabled = false;
+    }
+}
+
+
