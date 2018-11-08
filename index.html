@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FotoFinder</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    <link rel="stylesheet" type="text/css" media="screen href="normalize.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FotoFinder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+  <link rel="stylesheet" type="text/css" media="screen href="normalize.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-    <header class="header">
-       <div class="ff-logo">FOTO<img class ="ff-logo-img" src="images/foto-finder-logo.svg">FINDER</div> 
-       <div></div>
-       <form class="searchbar"><input class="search-input" type="text" placeholder="Search" name="search">
-        <button class="submit-button" type="submit" disabled><img class="search-svg" src="images/search.svg"></button>
-       </form>
-    </header>         
-    <section class="top-section">   
-            <div class="top-section-column">
-                <label class="title-text">Title </label>
-                <input class="title-input-field">
-                <label class="caption-text">Caption</label>
-                <input class="caption-input-field">
-                <label class="label" for="file">Choose a File</label>
-                <input type="file" id="file" class="input-file" accept=".png, .jpg, .jpeg">
-                
-                <div class="lower-buttons">
-                <button class="view-fav-btn view">View 1 Favorites</button>
-                <button class="show-more show show">View More</button>
-                <button id="add-to-album" class="add-to-album-btn">Add to Album</button>
-                </div>
-        </div>
+  <header class="header">
+    <div class="ff-logo">FOTO<img class ="ff-logo-img" src="images/foto-finder-logo.svg">FINDER</div>
+    <form class="searchbar"><input class="search-input" type="text" placeholder="Search" name="search">
+      <button class="submit-button" type="submit" disabled><img class="search-svg" src="images/search.svg"></button>
+    </form>
+  </header>         
+  <section class="top-section">   
+    <form class="top-section-column">
+      <label class="title-text">Title </label>
+      <input class="title-input-field">
+      <label class="caption-text">Caption</label>
+      <input class="caption-input-field">
+      <label class="label" for="file">Choose a File</label>
+      <input type="file" id="file" class="input-file" accept=".png, .jpg, .jpeg">
+      <div class="lower-buttons">
+        <button class="view-fav-btn view">View 1 Favorites</button>
+        <button class="show-more show show">View More</button>
+        <button id="add-to-album" class="add-to-album-btn">Add to Album</button>
+      </div>}}
+    </form>
     </section>   
-    <section class="bottom-section">
-   
-    </section>
+  <section class="bottom-section">
+  </section>
+  <script src="photo.js"></script>
+  <script src="main.js"></script>
 </body>
-<script src="photo.js"></script>
-<script src="main.js"></script>
 </html>
