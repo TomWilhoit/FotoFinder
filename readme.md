@@ -19,3 +19,7 @@ http://frontend.turing.io/projects/foto-finder-final.html
 
 ![mobile](https://user-images.githubusercontent.com/38082195/48142981-19618680-e26b-11e8-8704-399f05514e8b.png)
 
+##Create an instagram clone
+
+Original Assignment:
+http://frontend.turing.io/projects/foto-finder-final.html
